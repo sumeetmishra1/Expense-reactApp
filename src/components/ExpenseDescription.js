@@ -1,3 +1,4 @@
+
 function ExpenseDescription(props){
     const expenseName= props.expense.title
     const location = props.expense.location
