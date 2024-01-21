@@ -15,8 +15,17 @@ const ExpenseForm = () => {
   function dateChangedHandler(e){
     changedate(e.target.value)
   }
+  function formsubmitted(e){
+    e.preventDefault();
+    let obj={
+      title:enteredtitle,
+      amount:enteredamount,
+      date:entereddate
+    }
+    console.log(obj);
+  }
   return (
-    <form>
+    <form onSubmit={formsubmitted}>
       <div className='new-expense__controls'>
         <div className='new-expense__control'>
           <label>Title</label>
@@ -32,7 +41,7 @@ const ExpenseForm = () => {
         </div>
       </div>
       <div className='new-expense__actions'>
-        <button type='submit' >Add Expense</button>
+        <button type='submit'>Add Expense</button>
       </div>
     </form>
   );
