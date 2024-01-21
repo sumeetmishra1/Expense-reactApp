@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 function App() {
@@ -30,10 +31,16 @@ function App() {
       location:'Gorakhpur'
     },
   ];
+  const [newexpenses,addExpense]=useState(expenses);
+  function Expensehandler(expensedata){
+    newexpenses.push(expensedata);
+    addExpense(newexpenses)
+    console.log(newexpenses)
+  }
   return (
     <div>
-      <NewExpense/>
-      <Expenses items={expenses} />
+      <NewExpense onSubmtting={Expensehandler}/>
+      <Expenses items={newexpenses} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const[enteredtitle,changetitle]=useState('')
   const[enteredamount,changeamount]=useState('')
   const[entereddate,changedate]=useState('')
@@ -20,9 +20,10 @@ const ExpenseForm = () => {
     let obj={
       title:enteredtitle,
       amount:enteredamount,
-      date:entereddate
+      date:new Date(entereddate)
     }
-    console.log(obj);
+    props.onSubmitForm(obj);
+    e.target.reset()
   }
   return (
     <form onSubmit={formsubmitted}>
