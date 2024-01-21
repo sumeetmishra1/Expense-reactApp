@@ -7,7 +7,7 @@ const NewExpense = (props) => {
     const formsubmitted=(expense)=>{
         const expensedata={
             ...expense,
-            id:Math.random().toString
+            id:Math.random().toString()
         }
         props.onSubmtting(expensedata);
     }
