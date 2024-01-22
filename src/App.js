@@ -39,28 +39,10 @@ function App() {
       
     })
   }
-  function filterexpenses(e){
-    
-      setExpense( expenses.filter((expense)=>{
-        return expense.date.getFullYear()>e.target.value;
-      }))
   
-  }
-  let expenseform=<p><button onClick={showexpenseform}>Add Expense</button></p>
-   const[form,showform]=useState(expenseform)
-  function showexpenseform(){
-    expenseform=<NewExpense onSubmtting={expensehandler}/>
-    showform(expenseform);
-  }
   return (
     <div>
-      {form}
-      <select onChange={filterexpenses} >
-        <option>2019</option>
-        <option>2020</option>
-        <option>2021</option>
-        <option>2018</option>
-      </select>
+      <NewExpense onSubmtting={expensehandler}/>
       {newexpenses.length===0 && <p>No Expenses Found</p>}
       <Expenses items={newexpenses} />
     </div>

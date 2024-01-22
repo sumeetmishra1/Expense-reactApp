@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
@@ -11,9 +11,20 @@ const NewExpense = (props) => {
         }
         props.onSubmtting(expensedata);
     }
+    let expenseform=<p><button onClick={showexpenseform}>Add Expense</button></p>
+    const[form,showform]=useState(expenseform)
+   function showexpenseform(){
+     expenseform=<ExpenseForm onSubmitForm={formsubmitted} onCancel={hidepenseform}/>
+     showform(expenseform);
+   }
+   function hidepenseform(){
+    expenseform=<p><button onClick={showexpenseform}>Add Expense</button></p>
+    showform(expenseform);
+   }
+
   return (
     <div className='new-expense'>
-      <ExpenseForm onSubmitForm={formsubmitted}/>
+      {form}
     </div>
   );
 };
