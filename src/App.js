@@ -38,11 +38,23 @@ function App() {
       return [expensedata, ...prevExpense];
       
     })
-
+  }
+  function filterexpenses(e){
+    
+      setExpense( expenses.filter((expense)=>{
+        return expense.date.getFullYear()>e.target.value;
+      }))
+  
   }
   return (
     <div>
       <NewExpense onSubmtting={expensehandler}/>
+      <select onChange={filterexpenses} >
+        <option>2019</option>
+        <option>2020</option>
+        <option>2021</option>
+        <option>2018</option>
+      </select>
       <Expenses items={newexpenses} />
     </div>
   );

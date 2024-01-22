@@ -4,6 +4,7 @@ import './Expenses.css';
 function Expenses(props){
     return(
         <Card className='expenses'>
+            
         {
             props.items.map(expense=>{
                 return <ExpenseItem key={expense.id} expense={expense}></ExpenseItem>
