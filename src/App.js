@@ -46,15 +46,22 @@ function App() {
       }))
   
   }
+  let expenseform=<p><button onClick={showexpenseform}>Add Expense</button></p>
+   const[form,showform]=useState(expenseform)
+  function showexpenseform(){
+    expenseform=<NewExpense onSubmtting={expensehandler}/>
+    showform(expenseform);
+  }
   return (
     <div>
-      <NewExpense onSubmtting={expensehandler}/>
+      {form}
       <select onChange={filterexpenses} >
         <option>2019</option>
         <option>2020</option>
         <option>2021</option>
         <option>2018</option>
       </select>
+      {newexpenses.length===0 && <p>No Expenses Found</p>}
       <Expenses items={newexpenses} />
     </div>
   );
